@@ -1,0 +1,16 @@
+apiVersion: operator.kube-spin.mrezhi.net/v1alpha1
+kind: WasmApp
+metadata:
+  name: user-manager-app
+  namespace: webassembly
+spec:
+  replicas: 1
+  ociImage: artifacts.apps.mrezhi.net/wasm/spin/rust/user-manager
+  ociImageTag: v1
+  outboundHttp: true
+  runtimeClass: spin
+  imagePullSecret: artifacts-wasm-registry
+  ingressEnabled: true
+  ingressClass: nginx
+  ingressHost: user-manager.l26.mrezhi.net
+  ingressTlsEnabled: true

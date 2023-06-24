@@ -1,0 +1,16 @@
+apiVersion: operator.kube-spin.mrezhi.net/v1alpha1
+kind: WasmApp
+metadata:
+  name: prime-numbers-app
+  namespace: webassembly
+spec:
+  replicas: 1
+  ociImage: artifacts.apps.mrezhi.net/wasm/spin/rust/prime-numbers
+  ociImageTag: v1
+  outboundHttp: false
+  runtimeClass: spin
+  imagePullSecret: artifacts-wasm-registry
+  ingressEnabled: true
+  ingressClass: nginx
+  ingressHost: prime-numbers.l26.mrezhi.net
+  ingressTlsEnabled: true

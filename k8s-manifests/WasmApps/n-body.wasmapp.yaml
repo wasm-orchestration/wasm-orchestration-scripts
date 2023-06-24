@@ -1,0 +1,16 @@
+apiVersion: operator.kube-spin.mrezhi.net/v1alpha1
+kind: WasmApp
+metadata:
+  name: n-body-app
+  namespace: webassembly
+spec:
+  replicas: 1
+  ociImage: artifacts.apps.mrezhi.net/wasm/spin/rust/n-body
+  ociImageTag: v1
+  outboundHttp: false
+  runtimeClass: spin
+  imagePullSecret: artifacts-wasm-registry
+  ingressEnabled: true
+  ingressClass: nginx
+  ingressHost: n-body.l26.mrezhi.net
+  ingressTlsEnabled: true

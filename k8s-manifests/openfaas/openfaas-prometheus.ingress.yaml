@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  labels:
+    app: openfaas-prometheus
+  name: openfaas-prometheus
+  namespace: openfaas
+spec:
+  rules:
+  - host: openfaas-prometheus.l26.mrezhi.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: prometheus
+            port:
+              number: 9090
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - openfaas-prometheus.l26.mrezhi.net

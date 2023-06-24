@@ -1,0 +1,51 @@
+ingress:
+  enabled: True
+  pathType: ImplementationSpecific
+  hosts:
+    - host: gateway.l26.mrezhi.net
+      serviceName: gateway
+      servicePort: 8080
+      path: /
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-next-upstream-timeout: "3600"
+generateBasicAuth: True
+functionNamespace: openfaas-fn
+openfaasPRO: False
+clusterRole: True
+prometheus:
+  create: True
+alertmanager:
+  create: True
+gateway:
+  upstreamTimeout: 3200s
+  writeTimeout: 3600s
+  readTimeout: 3600s
+  replicas: 1
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+queueWorker:
+  replicas: 1
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+faasnetes:
+  writeTimeout: 3600s
+  readTimeout: 3600s
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+nats:
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+  metrics:
+    enabled: False

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  labels:
+    app: openfaas-alertmanager
+  name: openfaas-alertmanager
+  namespace: openfaas
+spec:
+  rules:
+  - host: openfaas-alertmanager.l26.mrezhi.net
+    http:
+      paths:
+      - backend:
+          service:
+            name: alertmanager
+            port:
+              number: 9093
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - openfaas-alertmanager.l26.mrezhi.net

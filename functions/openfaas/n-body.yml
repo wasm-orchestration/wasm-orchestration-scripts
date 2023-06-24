@@ -1,0 +1,14 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: https://gateway.l26.mrezhi.net
+functions:
+  n-body:
+    lang: rust
+    handler: ./n-body
+    image: artifacts.apps.mrezhi.net/wasm/openfaas/rust/n-body:v1
+    environment:
+      read_timeout: 3600s
+      write_timeout: 3600s
+      upstream_timeout: 3600s
+      exec_timeout: 3600s

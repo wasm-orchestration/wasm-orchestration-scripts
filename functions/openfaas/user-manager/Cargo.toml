@@ -1,0 +1,12 @@
+[package]
+name = "handler"
+version = "0.1.0"
+authors = ["Mark Sta Ana <booyaabooyaabooyaa@gmail.com>"]
+
+[dependencies]
+reqwest = {version = "0.11", features = ["blocking"]}
+fake = "2.5"
+rand = "0.8"
+serde = { version = "1.0.152", features = ["derive"] }
+serde_json = "1.0"
+bytes = "1"
